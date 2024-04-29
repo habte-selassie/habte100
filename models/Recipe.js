@@ -16,9 +16,17 @@ const recipeSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'User', // Relationship with User model
     required: true
   },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category' // Relationship with Category model
+  },
+  tags: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Tag' // Relationship with Tag model
+  }],
   createdAt: {
     type: Date,
     default: Date.now
@@ -28,3 +36,4 @@ const recipeSchema = new mongoose.Schema({
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
 module.exports = Recipe;
+
