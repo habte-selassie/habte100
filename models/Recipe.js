@@ -28,6 +28,23 @@ const recipeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Tag' // Relationship with Tag model
   }],
+  
+  // Fields for tracking interactions on the recipe
+  likes: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Like'
+   }],
+
+  shares: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Share'
+   }],
+
+  comments: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment' 
+  }],
+  
   createdAt: {
     type: Date,
     default: Date.now
