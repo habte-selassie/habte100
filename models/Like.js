@@ -11,10 +11,13 @@ const likeSchema = new mongoose.Schema({
   recipe: {
      type: mongoose.Schema.Types.ObjectId,
      ref: 'Recipe',
-     required: true
+     required: true,
+     unique : true, // Ensure only one like document per post
      },
-     
-  timestamp: { type: Date, default: Date.now }
+
+   count: { type: Number, default: 0 }, // Number of likes for the post
+
+   timestamp: { type: Date, default: Date.now }
 });
 
 const Like = mongoose.model('Like', likeSchema);

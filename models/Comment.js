@@ -18,7 +18,17 @@ const commentSchema = new mongoose.Schema({
      type: String,
      required: true
      },
-     
+
+  commentNumber: { 
+    type: Number,
+    default: 0
+    }, // Start comment number from 0
+  
+  allComments: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+   }],
+
   timestamp: { type: Date, default: Date.now }
 });
 
