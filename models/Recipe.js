@@ -10,6 +10,7 @@ const recipeSchema = new mongoose.Schema({
     required: true
   },
   ingredients: [String],
+  categories: [{ type: String }], // Array of category names
   instructions: {
     type: String,
     required: true

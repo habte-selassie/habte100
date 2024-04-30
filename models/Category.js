@@ -6,6 +6,10 @@ const categorySchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+ // Field for storing image URL of the category icon
+    parentCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'RecipeCategory' }, // Reference to parent category
+
+  imageUrl: String, 
   description: String,
   recipes: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -16,6 +20,8 @@ const categorySchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+
 
 const Category = mongoose.model('Category', categorySchema);
 
