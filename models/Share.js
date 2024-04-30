@@ -15,10 +15,7 @@ const shareSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  sharedAt: {
-    type: Date,
-    default: Date.now
-  }
+  timestamp: { type: Date, default: Date.now }
 });
 
 const Share = mongoose.model('Share', shareSchema);
