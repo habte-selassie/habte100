@@ -47,6 +47,28 @@ exports.createRating = async (req, res) => {
   }
 };
 
+// Controller method to get review details by rating ID
+exports.getReview = async (req, res) => {
+  try {
+    // Retrieve rating ID from request parameters
+    const ratingId = req.params.ratingId;
+
+    // Retrieve rating details from the database
+    const rating = await Rating.findById(ratingId);
+
+    // Check if the rating exists
+    if (!rating) {
+      return res.status(404).json({ success: false, error: 'Rating not found' });
+    }
+
+    // Return the rating details
+    res.status(200).json({ success: true, data: rating });
+  } catch (error) {
+    // Handle errors
+    console.error('Error retrieving review:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+};
 
 
 
